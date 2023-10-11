@@ -1,12 +1,14 @@
 #include <iostream>
 #include <thread>
 
+using namespace std;
+
 void print_hello() {
-  std::cout << "Hello, World!" << std::endl;
+  cout << "Hello, World!" << endl;
 }
 
 int main() {
-  std::thread t(print_hello);
+  thread t(print_hello);
   t.join();
   return 0;
 }
