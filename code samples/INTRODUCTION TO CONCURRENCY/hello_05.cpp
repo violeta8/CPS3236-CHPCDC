@@ -12,8 +12,8 @@ int main() {
     }));
   }
 
-  for (auto &thread : threads) {
-    thread.join();
+  for (std::vector<std::thread>::iterator it=threads.begin();it!=threads.end();it++) {
+    (*it).join();
   }
 
   return 0;

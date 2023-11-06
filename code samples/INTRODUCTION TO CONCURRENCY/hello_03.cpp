@@ -12,11 +12,14 @@ int main() {
 
   for (int i = 0; i < thread_count; ++i) {
     threads.emplace_back(std::thread(print_hello));
-  }
+  }       
 
-  for (auto &thread : threads) {
-    thread.join();
+  for (std::vector<std::thread>::iterator it=threads.begin();it!=threads.end();it++) {
+    (*it).join(); //no es el mismo output que el 02?
   }
 
   return 0;
 }
+
+
+            

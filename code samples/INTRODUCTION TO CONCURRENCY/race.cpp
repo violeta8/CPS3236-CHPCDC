@@ -5,7 +5,8 @@
 
 int counter = 0; // shared data
 
-void add_to_counter(int value) {
+void add_to_counter(int value) 
+{
 	// int temporary = counter;	// load counter into temporary
 	// temporary += value;			// update temporary
 	// counter = temporary;		// store back into counter
@@ -13,7 +14,8 @@ void add_to_counter(int value) {
 	counter += value;			// add value directly to counter
 }
 
-int main() {
+int main() 
+{
 	// Thread inc adds 1 to counter for MAX_VALUE times
 	std::thread inc = std::thread([]{ 
 		for (int count = 0; count < MAX_VALUE; count++) {
@@ -21,7 +23,7 @@ int main() {
 		}
 	});
 
-	// std::this_thread::sleep_for(std::chrono::seconds(2));
+	std::this_thread::sleep_for(std::chrono::milliseconds(1)); //si es to no se pone se hace un lio (antes estaba con seconds en vez de mililiseconds)
 
 	// Thread dec subtracts 1 from counter for MAX_VALUE times
 	std::thread dec = std::thread([]{
@@ -36,4 +38,4 @@ int main() {
 	std::cout << "Final value of counter is " << counter << std::endl;
 
 	return 0;
-}
+}	

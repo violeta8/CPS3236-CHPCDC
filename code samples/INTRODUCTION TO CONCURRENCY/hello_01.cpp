@@ -10,6 +10,6 @@ void printt() {
 
 int main() {
   thread t(printt);
-  t.join();
+  // t.join();
   return 0;
 }

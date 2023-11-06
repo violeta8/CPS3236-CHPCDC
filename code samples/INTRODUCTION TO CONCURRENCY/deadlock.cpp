@@ -2,6 +2,7 @@
 #include <thread>
 #include <vector>
 #include <random>
+#include<mutex>
 
 std::mutex rd_mutex;		 
 std::random_device rd;
@@ -49,7 +50,7 @@ void acquire_two_one(int thread_index) {
 	int delay_1 = random_int(1000) + 100;
 	int delay_2 = random_int(1000) + 200;
 
-	printf("Thread %d waiting for resource 2...\n", thread_index);
+	printf("Thread %d waiting for resource...\n", thread_index);
 
 	ACQUIRE_RESOURCE_2
 
@@ -85,8 +86,8 @@ int main() {
 		}));
 	}
 
-	for (auto &t : threads) {
-		t.join();
+	for (std::vector<std::thread>::iterator it=threads.begin();it!=threads.end();it++) {
+		it->join();
 	}
 
 	return 0;
